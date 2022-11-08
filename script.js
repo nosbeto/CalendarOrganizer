@@ -1,4 +1,33 @@
 mainContainerElQ = document.querySelector('.container-fluid')
+const el09 = $('#hour-09')
+const el10 = $('#hour-10')
+const el11 = $('#hour-11')
+const el12 = $('#hour-12')
+const el1 = $('#hour-1')
+const el2 = $('#hour-2')
+const el3 = $('#hour-3')
+const el4 = $('#hour-4')
+const el5 = $('#hour-5')
+const cDayEl = $('#currentDay')
+
+
+// get today times using js
+const now = dayjs().format('dddd[, ]MMMM[ ]D[, ]YYYY')
+
+//adds the day 
+cDayEl.text(now)
+
+
+///CLICK
+jQuery(document).ready(function () {
+    $(".time-block").append('<p><a id="myLink" href="#">Insert Content</a></p>');
+    $('#myLink').on('click',
+        function () {
+        	$('textarea').val('some content');
+        }
+	);
+});
+// https://stackoverflow.com/questions/33790124/jquery-add-text-to-input-on-click
 
 //create function to specify elements according to my needs
 function elementFromHtml (html) {
