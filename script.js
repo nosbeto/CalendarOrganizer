@@ -17,18 +17,6 @@ const now = dayjs().format('dddd[, ]MMMM[ ]D[, ]YYYY')
 //adds the day 
 cDayEl.text(now)
 
-
-///CLICK
-jQuery(document).ready(function () {
-    $(".time-block").append('<p><a id="myLink" href="#">Insert Content</a></p>');
-    $('#myLink').on('click',
-        function () {
-        	$('textarea').val('some content');
-        }
-	);
-});
-// https://stackoverflow.com/questions/33790124/jquery-add-text-to-input-on-click
-
 //create function to specify elements according to my needs
 function elementFromHtml (html) {
   const template = document.createElement('template');
