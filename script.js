@@ -1,4 +1,12 @@
-mainContainerElQ = document.querySelector('.container-fluid')
+const el09vjs = document.getElementById("hour-09");
+const el10vjs = document.getElementById("hour-10");
+const el11vjs = document.getElementById("hour-11");
+const el12vjs = document.getElementById("hour-12");
+const el1vjs = document.getElementById("hour-1");
+const el2vjs = document.getElementById("hour-2");
+const el3vjs = document.getElementById("hour-3");
+const el4vjs = document.getElementById("hour-4");
+const el5vjs = document.getElementById("hour-5");
 const el09 = $('#hour-09')
 const el10 = $('#hour-10')
 const el11 = $('#hour-11')
@@ -8,7 +16,32 @@ const el2 = $('#hour-2')
 const el3 = $('#hour-3')
 const el4 = $('#hour-4')
 const el5 = $('#hour-5')
+const saveBtn = $('.btn')
 const cDayEl = $('#currentDay')
+const descriptionEl = document.querySelector('.description')
+
+
+//This works
+var saveBtn2 = document.querySelector('.saveBtn')
+var userInput = el09vjs.childNodes[3].value
+// localStorage.setItem('hour-09',userInput)
+
+// add a listener for the entire box
+saveBtn2.addEventListener('click', function(event) {
+  var element = event.target;
+  // Checks if element is a button
+  if (element.matches("button") === true) {
+    // Get its data-index value and remove the todo element from the list
+    var index = element.parentElement.getAttribute("id");
+    console.log(index)
+    localStorage.setItem(index,userInput)
+  }
+});
+
+function changeColor () {
+  if (descriptionEl.innerHTML > 1 // or if time has passed )
+  .addClass('present')
+}
 
 
 // get today times using js
@@ -54,6 +87,7 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+
   //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
