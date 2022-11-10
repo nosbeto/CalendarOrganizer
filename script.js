@@ -1,12 +1,12 @@
-const el09vjs = document.getElementById("hour-09");
-const el10vjs = document.getElementById("hour-10");
-const el11vjs = document.getElementById("hour-11");
-const el12vjs = document.getElementById("hour-12");
-const el1vjs = document.getElementById("hour-1");
-const el2vjs = document.getElementById("hour-2");
-const el3vjs = document.getElementById("hour-3");
-const el4vjs = document.getElementById("hour-4");
-const el5vjs = document.getElementById("hour-5");
+// const el09vjs = document.getElementById("hour-09");
+// const el10vjs = document.getElementById("hour-10");
+// const el11vjs = document.getElementById("hour-11");
+// const el12vjs = document.getElementById("hour-12");
+// const el1vjs = document.getElementById("hour-1");
+// const el2vjs = document.getElementById("hour-2");
+// const el3vjs = document.getElementById("hour-3");
+// const el4vjs = document.getElementById("hour-4");
+// const el5vjs = document.getElementById("hour-5");
 const el09 = $('#hour-09')
 const el10 = $('#hour-10')
 const el11 = $('#hour-11')
@@ -16,9 +16,11 @@ const el2 = $('#hour-2')
 const el3 = $('#hour-3')
 const el4 = $('#hour-4')
 const el5 = $('#hour-5')
+const el6 = $('#hour-6')
+const el7 = $('#hour-7')
 const saveBtn = $('.btn')
 const cDayEl = $('#currentDay')
-const descriptionEl = document.querySelector('.description')
+// const descriptionEl = document.querySelector('.description')
 
 const elementsArray = [el09,el10,el11,el12,el1,el2,el3,el4,el5]
 
@@ -33,8 +35,10 @@ const twoTime = dayjs().set('hour',14).set('minute',00)
 const threeTime = dayjs().set('hour',15).set('minute',00)
 const fourthTime = dayjs().set('hour',16).set('minute',00)
 const fiveTime = dayjs().set('hour',17).set('minute',00)
+const sixTime = dayjs().set('hour',18).set('minute',00)
+const sevenTime = dayjs().set('hour',19).set('minute',00)
 
-const timesArray = [nineTime,tenTime,elevenTime,twelveTime,oneTime,twoTime,threeTime,fourthTime,fiveTime]
+const timesArray = [nineTime,tenTime,elevenTime,twelveTime,oneTime,twoTime,threeTime,fourthTime,fiveTime,sixTime,sevenTime]
 
 //if you want to format --> nineTime.format('hh:mm A')
 //Embedding dayjs structures into the website
@@ -57,27 +61,24 @@ const timesArray = [nineTime,tenTime,elevenTime,twelveTime,oneTime,twoTime,three
 function changingClass () {
   for (var i=0; i < elementsArray.length; i++) {
     console.log(elementsArray[i]) 
-      if ((dayjs().diff(timesArray[i],'minutes') >= 0) === true) {
+      if ((dayjs().diff(timesArray[i],'minutes') > 0) === true) {
         elementsArray[i].removeClass('future');
         elementsArray[i].addClass('past');
   }
-  if ((dayjs().diff(timesArray[i],'minutes') >= 0) === false) {
+  if ((dayjs().diff(timesArray[i],'minutes') < 0) === true) {
     elementsArray[i].removeClass('past');
+    elementsArray[i].removeClass('present');
     elementsArray[i].addClass('future');
-}
-if ((dayjs().diff(timesArray[i],'minutes') === 0) === true || (dayjs().diff(timesArray[i],'minutes') >= -60) === true)  {
+  }
+  if ((dayjs().diff(timesArray[i],'hours') === 0) === true) {
   elementsArray[i].removeClass('past');
   elementsArray[i].removeClass('future');
   elementsArray[i].addClass('present');
 }
-//   if ((userInput.length > 0)) {
-//     elementsArray[i].removeClass('future');
-//     elementsArray[i].addClass('present');
-// }
   } 
 }
-// Do I need multiple if or do I if else? 
 
+changingClass()
 
 //This works
 var saveBtn2 = $('.saveBtn')
