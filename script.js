@@ -20,6 +20,8 @@ const saveBtn = $('.btn')
 const cDayEl = $('#currentDay')
 const descriptionEl = document.querySelector('.description')
 
+const elementsArray = [el09,el10,el11,el12,el1,el2,el3,el4,el5]
+
 
 //Creating dayjs values to be used to compare them against time of the day and change color accordingly
 const nineTime = dayjs().set('hour',9).set('minute',00)
@@ -32,6 +34,8 @@ const threeTime = dayjs().set('hour',15).set('minute',00)
 const fourthTime = dayjs().set('hour',16).set('minute',00)
 const fiveTime = dayjs().set('hour',17).set('minute',00)
 
+const timesArray = [nineTime,tenTime,elevenTime,twelveTime,oneTime,twoTime,threeTime,fourthTime,fiveTime]
+
 //if you want to format --> nineTime.format('hh:mm A')
 //Embedding dayjs structures into the website
 // el09[0].children[0].append({nineTimeF})
@@ -39,37 +43,51 @@ const fiveTime = dayjs().set('hour',17).set('minute',00)
 // Comparison... if diff >1 then add class 'past
 // if diff 0 < then add a class future
 // dayjs().diff(nineTimesss,'hours')
+// function changingClass () {
+//   if ((dayjs().diff(nineTime,'minutes') >= 0) === true) {
+//     el09.removeClass('future');
+//     el09.addClass('past');
+//   }
+//   if ((userInput.length > 0)) {
+//     el09.removeClass('future');
+//     el09.addClass('present');
+// }
+// }
+
 function changingClass () {
-  if ((dayjs().diff(nineTime,'minutes') >= 0) === true) {
-    el09.removeClass('future');
-    el09.addClass('past');
+  for (var i=0; i < elementsArray.length; i++) {
+    console.log(elementsArray[i]) 
+      if ((dayjs().diff(timesArray[i],'minutes') >= 0) === true) {
+        elementsArray[i].removeClass('future');
+        elementsArray[i].addClass('past');
   }
-  if ((userInput.length > 0)) {
-    el09.removeClass('future');
-    el09.addClass('present');
+  if ((dayjs().diff(timesArray[i],'minutes') >= 0) === false) {
+    elementsArray[i].removeClass('past');
+    elementsArray[i].addClass('future');
 }
+if ((dayjs().diff(timesArray[i],'minutes') === 0) === true || (dayjs().diff(timesArray[i],'minutes') >= -60) === true)  {
+  elementsArray[i].removeClass('past');
+  elementsArray[i].removeClass('future');
+  elementsArray[i].addClass('present');
+}
+//   if ((userInput.length > 0)) {
+//     elementsArray[i].removeClass('future');
+//     elementsArray[i].addClass('present');
+// }
+  } 
 }
 // Do I need multiple if or do I if else? 
 
 
 //This works
-var saveBtn2 = document.querySelector('.saveBtn')
-var userInput = el09[0].children[1].value
-//el09vjs.childNodes[3].value
-// localStorage.setItem('hour-09',userInput)
+var saveBtn2 = $('.saveBtn')
 
 // add a listener for the entire box
-saveBtn2.addEventListener('click', function(event) {
+saveBtn2.on('click', function(event) {
   event.preventDefault();
-  var userInput = el09[0].children[1].value
-  var element = event.target;
-  // Checks if element is a button
-  if (element.matches("button") === true) {
-    // Get its data-index value and remove the todo element from the list
-    var index = element.parentElement.getAttribute("id");
-    console.log(index)
-    localStorage.setItem(index,userInput)
-  }
+  var userInput = $(event.target).siblings('textarea').val()
+  var id = $(event.target).parent('div').attr("id")
+  localStorage.setItem(id,userInput)
 });
 
 
