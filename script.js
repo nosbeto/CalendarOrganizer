@@ -21,13 +21,47 @@ const cDayEl = $('#currentDay')
 const descriptionEl = document.querySelector('.description')
 
 
+//Creating dayjs values to be used to compare them against time of the day and change color accordingly
+const nineTime = dayjs().set('hour',9).set('minute',00)
+const tenTime = dayjs().set('hour',10).set('minute',00)
+const elevenTime = dayjs().set('hour',11).set('minute',00)
+const twelveTime = dayjs().set('hour',12).set('minute',00)
+const oneTime = dayjs().set('hour',13).set('minute',00)
+const twoTime = dayjs().set('hour',14).set('minute',00)
+const threeTime = dayjs().set('hour',15).set('minute',00)
+const fourthTime = dayjs().set('hour',16).set('minute',00)
+const fiveTime = dayjs().set('hour',17).set('minute',00)
+
+//if you want to format --> nineTime.format('hh:mm A')
+//Embedding dayjs structures into the website
+// el09[0].children[0].append({nineTimeF})
+
+// Comparison... if diff >1 then add class 'past
+// if diff 0 < then add a class future
+// dayjs().diff(nineTimesss,'hours')
+function changingClass () {
+  if ((dayjs().diff(nineTime,'minutes') >= 0) === true) {
+    el09.removeClass('future');
+    el09.addClass('past');
+  }
+  if ((userInput.length > 0)) {
+    el09.removeClass('future');
+    el09.addClass('present');
+}
+}
+// Do I need multiple if or do I if else? 
+
+
 //This works
 var saveBtn2 = document.querySelector('.saveBtn')
-var userInput = el09vjs.childNodes[3].value
+var userInput = el09[0].children[1].value
+//el09vjs.childNodes[3].value
 // localStorage.setItem('hour-09',userInput)
 
 // add a listener for the entire box
 saveBtn2.addEventListener('click', function(event) {
+  event.preventDefault();
+  var userInput = el09[0].children[1].value
   var element = event.target;
   // Checks if element is a button
   if (element.matches("button") === true) {
@@ -37,11 +71,6 @@ saveBtn2.addEventListener('click', function(event) {
     localStorage.setItem(index,userInput)
   }
 });
-
-function changeColor () {
-  if (descriptionEl.innerHTML > 1 // or if time has passed )
-  .addClass('present')
-}
 
 
 // get today times using js
