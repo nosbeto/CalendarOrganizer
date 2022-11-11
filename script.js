@@ -1,12 +1,4 @@
-// const el09vjs = document.getElementById("hour-09");
-// const el10vjs = document.getElementById("hour-10");
-// const el11vjs = document.getElementById("hour-11");
-// const el12vjs = document.getElementById("hour-12");
-// const el1vjs = document.getElementById("hour-1");
-// const el2vjs = document.getElementById("hour-2");
-// const el3vjs = document.getElementById("hour-3");
-// const el4vjs = document.getElementById("hour-4");
-// const el5vjs = document.getElementById("hour-5");
+//creating my consts
 const el09 = $('#hour-09')
 const el10 = $('#hour-10')
 const el11 = $('#hour-11')
@@ -16,12 +8,10 @@ const el2 = $('#hour-2')
 const el3 = $('#hour-3')
 const el4 = $('#hour-4')
 const el5 = $('#hour-5')
-const el6 = $('#hour-6')
-const el7 = $('#hour-7')
 const saveBtn = $('.btn')
 const cDayEl = $('#currentDay')
-// const descriptionEl = document.querySelector('.description')
 
+//this creates an array of my elements
 const elementsArray = [el09,el10,el11,el12,el1,el2,el3,el4,el5]
 
 
@@ -35,29 +25,13 @@ const twoTime = dayjs().set('hour',14).set('minute',00)
 const threeTime = dayjs().set('hour',15).set('minute',00)
 const fourthTime = dayjs().set('hour',16).set('minute',00)
 const fiveTime = dayjs().set('hour',17).set('minute',00)
-const sixTime = dayjs().set('hour',18).set('minute',00)
-const sevenTime = dayjs().set('hour',19).set('minute',00)
 
-const timesArray = [nineTime,tenTime,elevenTime,twelveTime,oneTime,twoTime,threeTime,fourthTime,fiveTime,sixTime,sevenTime]
 
-//if you want to format --> nineTime.format('hh:mm A')
-//Embedding dayjs structures into the website
-// el09[0].children[0].append({nineTimeF})
 
-// Comparison... if diff >1 then add class 'past
-// if diff 0 < then add a class future
-// dayjs().diff(nineTimesss,'hours')
-// function changingClass () {
-//   if ((dayjs().diff(nineTime,'minutes') >= 0) === true) {
-//     el09.removeClass('future');
-//     el09.addClass('past');
-//   }
-//   if ((userInput.length > 0)) {
-//     el09.removeClass('future');
-//     el09.addClass('present');
-// }
-// }
+//This creates an array of my times
+const timesArray = [nineTime,tenTime,elevenTime,twelveTime,oneTime,twoTime,threeTime,fourthTime,fiveTime]
 
+//Changing my classes accordingly
 function changingClass () {
   for (var i=0; i < elementsArray.length; i++) {
     console.log(elementsArray[i]) 
@@ -98,6 +72,8 @@ const now = dayjs().format('dddd[, ]MMMM[ ]D[, ]YYYY')
 //adds the day 
 cDayEl.text(now)
 
+
+///This is just something I created for fun 
 //create function to specify elements according to my needs
 function elementFromHtml (html) {
   const template = document.createElement('template');
@@ -120,32 +96,27 @@ elFromHtmlEdited = elementFromHtml  (`
 return elFromHtmlEdited
 }
 
+// // 
+// for (let i = 0; i < localStorage.length; i++) {
+//   console.log(`${key}: ${localStorage.getItem(key)}`)
+// }
+
+
+$('#hour-09 .description').val(localStorage.getItem('hour-09'))
+$('#hour-10 .description').val(localStorage.getItem('hour-10'))
+$('#hour-11 .description').val(localStorage.getItem('hour-11'))
+$('#hour-12 .description').val(localStorage.getItem('hour-12'))
+$('#hour-01 .description').val(localStorage.getItem('hour-01'))
+$('#hour-02 .description').val(localStorage.getItem('hour-02'))
+$('#hour-03 .description').val(localStorage.getItem('hour-03'))
+$('#hour-04 .description').val(localStorage.getItem('hour-04'))
+$('#hour-05 .description').val(localStorage.getItem('hour-05'))
+$('#hour-06 .description').val(localStorage.getItem('hour-06'))
+$('#hour-07 .description').val(localStorage.getItem('hour-07'))
+
+
+
 //This functions appends the elemnent into the mainContainer
 function appendHtml () {
   mainContainerElQ.append(elFromHtmlEdited)
 }
-
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-});
