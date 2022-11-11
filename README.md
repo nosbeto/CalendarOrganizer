@@ -32,4 +32,4 @@ During the development of this application. I reinforced my knowledge on
 
 ## Download
 
-Feel free to download the repo and make your own edits: 
+Feel free to download the repo and make your own edits: https://github.com/nosbeto/CalendarOrganizer
