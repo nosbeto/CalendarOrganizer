@@ -18,7 +18,7 @@ This app is a  simple calendar application that allows a user to save events for
 
 
 ## Access
-This app is fully deployed and can be utilized in your browser. To access, simply visit 
+This app is fully deployed and can be utilized in your browser. To access, simply visit https://nosbeto.github.io/CalendarOrganizer/
 
 
 
